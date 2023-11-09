@@ -1,0 +1,26 @@
+---
+- hosts: dev
+  user: ansible
+  become: yes
+  connection: ssh
+
+  vars:
+    xyz: git
+    abc: maven
+    def: install httpd
+    ghi: restart httpd
+
+  tasks:
+    name: installing git in dev server
+    action: yum name={{'xyz'}} state=present
+
+    name: insatlling maven in dev server
+    action: yum name={{'abc'}} state=present
+
+    name: installing httpd in dev server
+    action: yum name={{'def'}} state=present
+
+    name: restarting the httpd in dev server
+    action: yum name={{'ghi'}} state=restarted
+
+
